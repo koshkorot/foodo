@@ -15,5 +15,9 @@ module.exports = {
 
   async findByUserPass(username, password) {
     return users.find(u => u.username === username && u.password === password);
+  },
+
+  async fetchById(userId) {
+    return users.find(u => u.id === userId);
   }
 };

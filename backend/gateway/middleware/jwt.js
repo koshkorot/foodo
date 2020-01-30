@@ -17,6 +17,7 @@ module.exports = {
     const token = req.headers['x-authorization'];
     if (token) {
       try {
+        // QUALITY_ATTRIBUTES Security Integrity checked by verifying jwt token that user provides
         res.locals.decodedToken = jwt.verify(token, ACCESS_TOKEN.secretKey, ACCESS_TOKEN.verifyOptions);
         req.user = res.locals.decodedToken && res.locals.decodedToken.user;
         next();

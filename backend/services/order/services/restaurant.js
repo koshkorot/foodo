@@ -6,6 +6,7 @@ module.exports = {
     const data = {
       restaurantId,
     };
+    // QUALITY_ATTRIBUTES Interoperability exchange data properly
     const {error, menu} = await looleh.call('restaurant.menu.get', data);
     if (error) {
       throw error;

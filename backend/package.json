@@ -10,6 +10,7 @@
     "path": "0.12.7",
     "body-parser": "1.18.3",
     "jsonwebtoken": "7.4.3",
-    "crypto": "1.0.1"
+    "crypto": "1.0.1",
+    "bluebird": "3.5.5"
   }
 }

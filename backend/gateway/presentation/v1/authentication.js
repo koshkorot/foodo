@@ -95,7 +95,7 @@ router.post('/', async (req, res) => {
  */
 router.post('/signup', async (req, res) => {
   try {
-    const {username, firstName, lastName, password, passwordConfirm, email, phoneNumber} = req.body;
+    const {username, firstName, lastName, password, passwordConfirm, email, phoneNumber, addresses} = req.body;
     validator.notNullOrEmpty(username, 'username');
     validator.notNullOrEmpty(firstName, 'firstName');
     validator.notNullOrEmpty(lastName, 'lastName');
@@ -111,7 +111,7 @@ router.post('/signup', async (req, res) => {
     }
 
     let {token, user} =
-      await userService.signUp(username, firstName, lastName, password, email, phoneNumber);
+      await userService.signUp(username, firstName, lastName, password, email, phoneNumber, addresses);
     const result = {
       result: 'OK',
       data: {

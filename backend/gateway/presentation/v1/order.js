@@ -35,6 +35,7 @@ router.post('/', authorizeAccessToAPI, async (req, res) => {
     };
     res.status(200).json(result);
   } catch (error) {
+    // QUALITY_ATTRIBUTES Availability Exception Handling
     errorHandler.sendError(res, error);
   }
 });

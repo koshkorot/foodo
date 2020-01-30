@@ -6,7 +6,9 @@ module.exports = {
     const data = {
       userId,
     };
-    const {error, balance} = await looleh.call('wallet.balance.get', data);
+    // QUALITY_ATTRIBUTES Availability Exception Detection using timeout
+    // QUALITY_ATTRIBUTES Performance Bound Execution Times
+    const {error, balance} = await looleh.call('wallet.balance.get', data, { timeout: 5000 });
     if (error) {
       throw error;
     }

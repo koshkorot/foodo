@@ -15,9 +15,9 @@ module.exports = {
 
   async signUp(message) {
     try {
-      const {username, firstName, lastName, password, email, phoneNumber} = message;
+      const {username, firstName, lastName, password, email, phoneNumber, addresses} = message;
       const { user, token } =
-        await userApplication.signUp(username, firstName, lastName, password, email, phoneNumber);
+        await userApplication.signUp(username, firstName, lastName, password, email, phoneNumber, addresses);
       return Object.assign(message, {user, token});
     } catch (error) {
       return errorHandler.handleError(error, message);

@@ -13,6 +13,7 @@ const router = require('express').Router();
    "result": "OK"
  }
  */
+// QUALITY_ATTRIBUTES Availability Ping/echo
 router.get('/', async (req, res) => {
   res.status(200).json({
     result: 'OK',

@@ -1,6 +1,8 @@
+const Promise = require('bluebird');
 const orderDataAccess = require('../dataAccess/order');
 const notificationService = require('../services/notification');
 const restaurantService = require('../services/restaurant');
+const userService = require('../services/user');
 const validator = require('validator');
 
 function calculatePurchasePrice(itmes) {
@@ -11,8 +13,11 @@ module.exports = {
   async submit(userId, restaurantId, items) {
     validator.notNullOrEmpty(userId);
     validator.notNullOrEmpty(restaurantId);
-    const menuItems = await restaurantService.getMenu(restaurantId);
-    console.log(menuItems);
+    // QUALITY_ATTRIBUTES Performance Parallel processing
+    const [addresses, menuItems] = await Promise.all([
+      userService.getAddress(userId),
+      restaurantService.getMenu(restaurantId),
+    ]);
     items.forEach((item) => {
       if(!menuItems.find(mi => mi.id === item.id)){
         const error = new Error();
@@ -27,6 +32,7 @@ module.exports = {
       payed: false,
       items,
       price,
+      address: addresses[0],
       createdAt: new Date(),
     };
     const reference = await orderDataAccess.insert(order);

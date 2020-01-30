@@ -4,7 +4,7 @@ const loolehConfig = require('./config/looleh');
 
 
 app.set('port', parseInt(process.env.PORT) || 3000);
-
+// QUALITY_ATTRIBUTES Security Encrypt Data: all APIs on HTTPS when deploy on server
 let server;
 const run = async () => {
   try {

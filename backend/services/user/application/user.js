@@ -22,6 +22,7 @@ function hashPassword(password) {
 module.exports = {
   async login(username, password) {
     password = hashPassword(password);
+    // QUALITY_ATTRIBUTES Security Audit: keep a record of user and system actions
     console.log(`User ${username} wants to login with password ${password}`);
     const user = await userDataAccess.findByUserPass(username, password);
     if (!user) {
@@ -35,7 +36,7 @@ module.exports = {
     }
   },
 
-  async signUp(username, firstName, lastName, password, email, phoneNumber) {
+  async signUp(username, firstName, lastName, password, email, phoneNumber, addresses) {
     let user = {
       username,
       firstName,
@@ -44,6 +45,7 @@ module.exports = {
       email,
       role: 'CUSTOMER',
       password: hashPassword(password),
+      addresses,
     };
     user = await userDataAccess.insert(user);
     return {
@@ -51,4 +53,9 @@ module.exports = {
       token: createToken(user),
     }
   },
+
+  async getAddress(userId) {
+    const {addresses} = await userDataAccess.fetchById(userId);
+    return addresses;
+  }
 };

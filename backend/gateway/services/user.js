@@ -13,10 +13,10 @@ module.exports = {
     return {token, user};
   },
 
-  async signUp(username, firstName, lastName, password, email, phoneNumber) {
+  async signUp(username, firstName, lastName, password, email, phoneNumber, addresses) {
     const looleh = LoolehFactory.get();
     const data = {
-      username, firstName, lastName, password, email, phoneNumber,
+      username, firstName, lastName, password, email, phoneNumber, addresses,
     };
     const {error, token, user} = await looleh.call('user.signUp', data);
     if (error) {
