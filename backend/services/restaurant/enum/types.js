@@ -1,0 +1,6 @@
+module.exports = {
+  TRADITIONAL: 'TRADITIONAL',
+  FAST_FOOD: 'FAST_FOOD',
+  CAFE: 'CAFE',
+  TAKE_AWAY: 'TAKE_AWAY',
+};

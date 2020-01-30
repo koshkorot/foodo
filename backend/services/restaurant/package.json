@@ -1,0 +1,10 @@
+{
+  "name": "restaurant",
+  "version": "0.0.1",
+  "dependencies": {
+    "@tapsi/looleh": "1.0.10",
+    "config-manager": "file:../../lib/config-manager",
+    "logger-assistant": "file:../../lib/logger-assistant",
+    "validator": "file:../../lib/foody-validator"
+  }
+}

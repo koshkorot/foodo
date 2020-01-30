@@ -1,0 +1,14 @@
+{
+  "name": "gateway",
+  "version": "0.0.1",
+  "dependencies": {
+    "@tapsi/looleh": "1.0.10",
+    "express": "4.17.1",
+    "config-manager": "file:../lib/config-manager",
+    "logger-assistant": "file:../lib/logger-assistant",
+    "validator": "file:../lib/foody-validator",
+    "path": "0.12.7",
+    "body-parser": "1.18.3",
+    "jsonwebtoken": "7.4.3"
+  }
+}
