@@ -2,7 +2,8 @@ const { LoolehFactory } = require('@tapsi/looleh');
 const loolehConfig = require('./config/looleh');
 
 const restaurantHandler = require('./handler/restaurant');
-
+// QUALITY_ATTRIBUTES Development Distributability
+// QUALITY_ATTRIBUTES Scalability: Micro service Arch is Horizontally scalable.
 const run = async () => {
   try {
     const looleh = await LoolehFactory.create('restaurant', LoolehFactory.TYPES.RMQ, loolehConfig);
