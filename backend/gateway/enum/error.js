@@ -18,5 +18,9 @@ module.exports = {
   INVALID_CREDENTIAL: {
     code: 403,
     message: 'نام کاربری یا رمز عبور اشتباه است.',
+  },
+  ITEM_NOT_FOUND: {
+    code: 403,
+    message: 'کالای مورد نظر یافت نشد.',
   }
 };

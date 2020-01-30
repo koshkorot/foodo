@@ -14,7 +14,7 @@ module.exports = {
     const menuItems = await restaurantService.getMenu(restaurantId);
     console.log(menuItems);
     items.forEach((item) => {
-      if(!menuItems.find(mi => mi.id !== item.id)){
+      if(!menuItems.find(mi => mi.id === item.id)){
         const error = new Error();
         error.codeString = 'ITEM_NOT_FOUND';
         throw error;
