@@ -3,6 +3,7 @@ const routes = {
   '/authentication': require('./authentication'),
   '/credit': require('./credit'),
   '/restaurant': require('./restaurant'),
+  '/order': require('./order'),
 };
 
 module.exports = (app) => {
