@@ -1,4 +1,4 @@
-const orders = [];
+let orders = [];
 
 module.exports = {
   async insert(order) {
@@ -6,4 +6,12 @@ module.exports = {
     orders.push(order);
     return order.id;
   },
+
+  async fetchByReference(reference) {
+    return orders.find(o => o.id === parseInt(reference));
+  },
+
+  async remove(reference) {
+    orders = orders.filter(o => o.id !== parseInt(reference));
+  }
 };

@@ -22,5 +22,13 @@ module.exports = {
   ITEM_NOT_FOUND: {
     code: 403,
     message: 'کالای مورد نظر یافت نشد.',
+  },
+  ORDER_NOT_FOUND: {
+    code: 403,
+    message: 'سفارش پیدا نشد.',
+  },
+  PERMISSION_DENIED: {
+    code: 403,
+    message: 'شما دسترسی لازم برای اینکار را ندارید.',
   }
 };

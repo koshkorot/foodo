@@ -12,5 +12,25 @@ module.exports = {
       return errorHandler.handleError(error, message);
     }
   },
+
+  async getByReference(message) {
+    try {
+      const { userId, reference } = message;
+      message.order = await orderApplication.getByReference(userId, reference);
+      return message;
+    } catch (error) {
+      return errorHandler.handleError(error, message);
+    }
+  },
+
+  async cancel(message) {
+    try {
+      const { userId, reference } = message;
+      await orderApplication.cancel(userId, reference);
+      return message;
+    } catch (error) {
+      return errorHandler.handleError(error, message);
+    }
+  }
 };
 

@@ -12,4 +12,27 @@ module.exports = {
     }
     return reference;
   },
+
+  async getOrder(userId, reference) {
+    const looleh = LoolehFactory.get();
+    const data = {
+      userId, reference,
+    };
+    const {error, order} = await looleh.call('order.getByReference', data);
+    if (error) {
+      throw error;
+    }
+    return order;
+  },
+
+  async cancelOrder(userId, reference) {
+    const looleh = LoolehFactory.get();
+    const data = {
+      userId, reference,
+    };
+    const {error} = await looleh.call('order.cancel', data);
+    if (error) {
+      throw error;
+    }
+  }
 };

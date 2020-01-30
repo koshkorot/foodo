@@ -38,5 +38,25 @@ module.exports = {
     const reference = await orderDataAccess.insert(order);
     notificationService.sendNotification(userId, `خرید شما با شماره پیگیری ${reference} ثبت شد.`);
     return reference;
-  }
+  },
+
+  async getByReference(userId, reference) {
+    const order = await orderDataAccess.fetchByReference(reference);
+    if (!order) {
+      const error = new Error();
+      error.codeString = 'ORDER_NOT_FOUND';
+      throw error;
+    }
+    return order;
+  },
+
+  async cancel(userId, reference) {
+    const order = await orderDataAccess.fetchByReference(reference);
+    if (!order || (order.userId !== userId)) {
+      const error = new Error();
+      error.codeString = 'PERMISSION_DENIED';
+      throw error;
+    }
+    await orderDataAccess.remove(reference);
+  },
 };
